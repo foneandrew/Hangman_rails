@@ -1,0 +1,23 @@
+<h1> WIZELCOME TO ZER GAM </h1>
+<%= link_to "Back to Main", Game %>
+<br>
+<%= obscured_word(@obscured_word) %>
+<br>
+<%= guess_list(@guessed_letters).html_safe %>
+<br>
+yo shit guesses: <%= @game.wrong_guesses.length %>
+<br>
+lives remaining: <%= @game.lives_remaining %>
+<br>
+have you won yet? <%= game_won?(@game) ? "yes" : "no" %>
+<br>
+have you lost yet? <%= game_lost?(@game) ? "yes word was #{@game.secret_word}" : "no" %>
+<p>
+<%= form_for [@game, GuessedLetter.new] do |f| %>
+  <%= f.text_field :letter, required: true, autofocus: true, placeholder: "Enter your guess!", pattern: '^[a-z]$', title: "Guess a single letter (lowercase a-z)", disabled: game_over?(@game) %>
+  <%= f.submit "Guesticulate" %>
+<% end %>
+</p>
+<%= form_for(Game.new) do |f| %>
+  <%= f.submit "New Game" %>
+<% end %>
