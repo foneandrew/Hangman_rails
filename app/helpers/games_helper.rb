@@ -9,6 +9,10 @@ module GamesHelper
     end.join
   end
 
+  def hangman_image(game)
+    Game::MAX_LIVES - game.lives_remaining
+  end
+
   def guess_list(guessed_letters)
     guessed_letters.map do |letter|
       content_tag :span, letter.letter, class: (letter.correct? ? :correct_letter : :wrong_letter)
