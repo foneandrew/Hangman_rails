@@ -1,6 +1,7 @@
 
 <h1>Hangdude</h1>
 <div class="floating_box">
+<%= flash[:alert] %>
   <%= form_for(Game.new) do |f| %>
     <%= f.submit "New Game" %>
   <% end %>

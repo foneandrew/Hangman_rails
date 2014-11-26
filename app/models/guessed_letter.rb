@@ -13,6 +13,6 @@ class GuessedLetter < ActiveRecord::Base
   private
 
   def game_is_in_progress?
-    errors.add :game_id, 'cannot add guess to a game that is not in progress' if game.lives_remaining <= 0 || game.word_is_guessed?
+    errors.add :game_id, 'cannot add guess to a game that is not in progress' if game.lives_remaining < 0 || game.word_is_guessed?
   end
 end

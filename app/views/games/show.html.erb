@@ -10,9 +10,9 @@
     <%= f.text_field :letter, required: true, autofocus: true, placeholder: "Enter your guess!", pattern: '^[a-z]$', title: "Guess a single letter (lowercase a-z)", disabled: game_over?(@game) %>
     <%= f.submit "Guesticulate" %>
   <% end %>
+  <%= flash[:alert] %>
   <%= end_game_message(@game) %>
-
-  <%= form_for(Game.new) do |f| %>
+    <%= form_for(Game.new) do |f| %>
     <%= f.submit "New Game" %>
   <% end %>
 </div>
