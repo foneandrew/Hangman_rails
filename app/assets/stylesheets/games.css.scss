@@ -1,3 +1,78 @@
 // Place all the styles related to the games controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+body {
+  color: white;
+  text-align: center;
+  font-family: Verdana;
+  background: #11ad00;
+  margin: 0 25%;
+}
+
+h1 {
+  font-family: Georgia;
+  font-size: 250%;
+}
+
+.guess_list {
+  padding: 10px;
+}
+
+.new_game {
+  margin: 10px, 0, 0;
+}
+
+.new_guessed_letter {
+  padding: 15px;
+}
+
+.floating_box {
+  -webkit-box-sizing: content-box;
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+  overflow: hidden;
+  border: none;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+  text-align: center;
+  background: #8bef00;
+  -webkit-box-shadow: 5px 5px 1px 0 rgba(0,0,0,0.7) ;
+  box-shadow: 5px 5px 1px 0 rgba(0,0,0,0.7) ;
+  text-shadow: 1px 1px 1px rgba(0,0,0,0.2) ;
+  padding: 5%;
+  overflow: scroll;
+  margin: 0 0 5%;
+}
+
+.obscured_word {
+  font-size: 300%;
+}
+
+.correct_letter {
+  color: green;
+}
+
+.wrong_letter {
+  color: red;
+}
+
+.game_won_message {
+  color: green;
+}
+
+.game_lost_message {
+  color: #9a0000
+}
+
+.game_won {
+  color: green;
+}
+
+.game_lost {
+  color: #9a0000;
+}
+
+.game_in_progress {
+  color: white;
+}

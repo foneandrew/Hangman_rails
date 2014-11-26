@@ -1,14 +1,14 @@
-<h1>Oh lordy here be a word guessing game!</h1>
-<p>trains are cool</p>
-<p>
-<%= form_for(Game.new) do |f| %>
-  <%= f.submit "New Game" %>
-<% end %>
-</p>
-<ul style="list-style-type:none">
-  <% @games.each do |game| %>
-    <li>
-      <%= link_to game_name(game), game %>
-    </li>
+
+<h1>Hangdude</h1>
+<div class="floating_box">
+  <%= form_for(Game.new) do |f| %>
+    <%= f.submit "New Game" %>
   <% end %>
-</ul>
+  <ul style="list-style-type:none">
+    <% @games.each do |game| %>
+      <li>
+        <%= link_to game_description(game), game %>
+      </li>
+    <% end %>
+  </ul>
+</div>

@@ -1,6 +1,6 @@
 class GamesController < ApplicationController
   def index
-    @games = Game.last(20).reverse
+    @games = Game.all.reverse
   end
 
   def show

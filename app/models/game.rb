@@ -13,7 +13,7 @@ class Game < ActiveRecord::Base
   end
 
   def correct_guesses
-    guessed_letters.select(&:correct)
+    guessed_letters.select(&:correct?)
   end
 
   def guessed_word

@@ -1,23 +1,17 @@
-<h1> WIZELCOME TO ZER GAM </h1>
+<h1> Hangdude </h1>
+<div class="floating_box">
+  <span class="obscured_word"><%= obscured_word(@obscured_word) %></span>
+  <div class="guess_list">
+  <%= guess_list(@guessed_letters).html_safe %>
+  </div>
+  lives remaining: <%= @game.lives_remaining %>
+  <%= form_for [@game, GuessedLetter.new] do |f| %>
+    <%= f.text_field :letter, required: true, autofocus: true, placeholder: "Enter your guess!", pattern: '^[a-z]$', title: "Guess a single letter (lowercase a-z)", disabled: game_over?(@game) %>
+    <%= f.submit "Guesticulate" %>
+  <% end %>
+  <%= end_game_message(@game) %>
+  <%= form_for(Game.new) do |f| %>
+    <%= f.submit "New Game" %>
+  <% end %>
+</div>
 <%= link_to "Back to Main", Game %>
-<br>
-<%= obscured_word(@obscured_word) %>
-<br>
-<%= guess_list(@guessed_letters).html_safe %>
-<br>
-yo shit guesses: <%= @game.wrong_guesses.length %>
-<br>
-lives remaining: <%= @game.lives_remaining %>
-<br>
-have you won yet? <%= game_won?(@game) ? "yes" : "no" %>
-<br>
-have you lost yet? <%= game_lost?(@game) ? "yes word was #{@game.secret_word}" : "no" %>
-<p>
-<%= form_for [@game, GuessedLetter.new] do |f| %>
-  <%= f.text_field :letter, required: true, autofocus: true, placeholder: "Enter your guess!", pattern: '^[a-z]$', title: "Guess a single letter (lowercase a-z)", disabled: game_over?(@game) %>
-  <%= f.submit "Guesticulate" %>
-<% end %>
-</p>
-<%= form_for(Game.new) do |f| %>
-  <%= f.submit "New Game" %>
-<% end %>

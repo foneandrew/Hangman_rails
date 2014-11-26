@@ -5,7 +5,7 @@ class GuessedLetter < ActiveRecord::Base
     format: { with: /\A[a-z]\z/ },
     uniqueness: { scope: :game_id }
 
-  def correct
+  def correct?
     game.secret_word.include? letter
   end
 end
