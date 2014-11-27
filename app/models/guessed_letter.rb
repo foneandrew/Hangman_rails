@@ -1,5 +1,6 @@
 class GuessedLetter < ActiveRecord::Base
   belongs_to :game
+  before_validation :downcase_letter
   validates :letter, 
     presence: true, 
     format: { with: /\A[a-z]\z/ },
@@ -15,7 +16,11 @@ class GuessedLetter < ActiveRecord::Base
   private
 
   def game_is_in_progress?
-    #note currently semi-broken as the game will know its over before the record is saved
+    #note currently semi-broken as the game will know its over before the record is actually saved and verified
     errors.add :game_id, 'cannot add guess to a game that is not in progress' if game.lives_remaining < 0 || game.word_is_guessed?
+  end
+
+  def downcase_letter
+    self.letter = letter.downcase
   end
 end

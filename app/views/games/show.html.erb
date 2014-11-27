@@ -1,18 +1,18 @@
 <h1> Hangdude </h1>
 <div class="floating_box">
   <div>
-    <%= image_tag "dead_guy_#{hangman_image(@game)}.png" %>
+    <%= image_tag hangman_image(@game) %>
   </div>
   <%= content_tag :span, obscured_word(@game), class: (game_lost?(@game) ? :obscured_word_lose : :obscured_word) %>
   <%= content_tag :div, guess_list(@game).html_safe, class: :guess_list %>
   Lives remaining: <%= @game.lives_remaining %>
   <%= form_for [@game, GuessedLetter.new] do |f| %>
-    <%= f.text_field :letter, required: true, autofocus: true, placeholder: "Enter your guess!", pattern: '^[a-z]$', title: "Guess a single letter (lowercase a-z)", disabled: game_over?(@game) %>
-    <%= f.submit "Guesticulate" %>
+    <%= f.text_field :letter, required: true, autofocus: true, placeholder: "Enter your guess!", pattern: '^[A-Za-z]$', title: "Guess a single letter (lowercase a-z)", disabled: game_over?(@game) %>
+    <%= f.submit "Guesticulate", disabled: game_over?(@game) %>
   <% end %>
   <%= flash[:alert] %>
   <%= end_game_message(@game) %>
-    <%= form_for(Game.new) do |f| %>
+  <%= form_for(Game.new) do |f| %>
     <%= f.submit "New Game" %>
   <% end %>
 </div>

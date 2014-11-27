@@ -10,7 +10,7 @@ module GamesHelper
   end
 
   def hangman_image(game)
-    Game::MAX_LIVES - game.lives_remaining
+    "dead_guy_#{Game::MAX_LIVES - game.lives_remaining}.png"
   end
 
   def guess_list(game)
@@ -32,7 +32,7 @@ module GamesHelper
     games_won = total_games.select{|game| game.word_is_guessed?}
     games_lost = total_games.select{|game| game.lives_remaining <= 0}
     avg_lives_remaining = games_won.map{|game| game.lives_remaining}.sum / (games_won.length + 0.0)
-    
+
     "Total games played: #{total_games.length}, Games won: #{games_won.length}, Games lost: #{games_lost.length}, average lives remaining: #{avg_lives_remaining.round(1)}"
   end
 
