@@ -4,7 +4,7 @@ class Game < ActiveRecord::Base
 
   has_many :guessed_letters, dependent: :destroy
 
-  before_validation :setup_new_word
+  before_validation :setup_new_word, on: :create
     #use self.whatever to initialize fields
   validates :secret_word, presence: true
 
@@ -17,16 +17,24 @@ class Game < ActiveRecord::Base
   end
 
   def partially_revealed_word
-    guessed_letters = correct_guesses.map(&:letter)
-    secret_word.chars.map{|letter| letter if guessed_letters.include? letter}
+    correctly_guessed_letters = correct_guesses.map(&:letter)
+    secret_word.chars.map { |letter| letter if correctly_guessed_letters.include?(letter) }
   end
 
   def lives_remaining
     MAX_LIVES - wrong_guesses.length
   end
 
-  def word_is_guessed?
+  def game_won?
     (secret_word.chars.uniq - guessed_letters.map(&:letter).uniq).empty?
+  end
+
+  def game_lost?
+    lives_remaining <= 0
+  end
+
+  def game_over?
+    game_won? || game_lost?
   end
 
   private

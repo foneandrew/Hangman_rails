@@ -28,6 +28,12 @@ gem 'spring',        group: :development
 
 gem 'rspec-rails'
 
+gem 'better_errors'
+
+gem 'binding_of_caller'
+
+#gem 'pry_byebug'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

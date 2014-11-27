@@ -12,5 +12,5 @@
       </li>
     <% end %>
   </ul>
-  <%= content_tag :span, global_game_statistics, class: :games_stats %>
+  <%= content_tag :span, global_game_statistics(total_games: @total_games, games_won: @games_won, games_lost: @games_lost, avg_lives_remaining: @avg_lives_remaining), class: :games_stats %>
 </div>

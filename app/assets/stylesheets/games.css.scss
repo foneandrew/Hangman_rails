@@ -20,6 +20,10 @@ ul {
   list-style: none;
 }
 
+a:link {
+  text-decoration: none;
+}
+
 .guess_list {
   padding: 10px;
 }
@@ -38,8 +42,8 @@ ul {
   border-radius: 5px;
   text-align: center;
   background: #8bef00;
-  -webkit-box-shadow: 5px 5px 1px 0 rgba(0,0,0,0.7) ;
-  box-shadow: 5px 5px 1px 0 rgba(0,0,0,0.7) ;
+  -webkit-box-shadow: 5px 5px 1px 0 rgba(0,0,0,0.5) ;
+  box-shadow: 5px 5px 1px 0 rgba(0,0,0,0.5) ;
   text-shadow: 1px 1px 1px rgba(0,0,0,0.2) ;
   padding: 5%;
   overflow: scroll;
@@ -76,7 +80,7 @@ ul {
 }
 
 .game_won {
-  color: black;
+  color: grey;
 }
 
 .game_lost {
@@ -84,5 +88,5 @@ ul {
 }
 
 .game_in_progress {
-  color: white;
+  color: blue;
 }

@@ -1,10 +1,11 @@
 class GuessedLettersController < ApplicationController
   def create
     game = Game.find(params[:game_id])
+    make_guess = MakeGuess.new(game: game, params: params)
     
-    guessed_letter = game.guessed_letters.create(params.require(:guessed_letter).permit(:letter))
-    
-    guessed_letter.save
+    error = make_guess.call
+    flash.alert = error if error
+
     redirect_to game
   end
 end
