@@ -16,7 +16,7 @@ class Game < ActiveRecord::Base
     guessed_letters.select(&:correct?)
   end
 
-  def guessed_word
+  def partially_revealed_word
     guessed_letters = correct_guesses.map(&:letter)
     secret_word.chars.map{|letter| letter if guessed_letters.include? letter}
   end

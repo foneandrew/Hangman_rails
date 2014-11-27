@@ -3,8 +3,8 @@
   <div>
     <%= image_tag "dead_guy_#{hangman_image(@game)}.png" %>
   </div>
-  <%= content_tag :span, obscured_word(@obscured_word), class: :obscured_word %>
-  <%= content_tag :div, guess_list(@guessed_letters).html_safe, class: :guess_list %>
+  <%= content_tag :span, obscured_word(@game), class: (game_lost?(@game) ? :obscured_word_lose : :obscured_word) %>
+  <%= content_tag :div, guess_list(@game).html_safe, class: :guess_list %>
   Lives remaining: <%= @game.lives_remaining %>
   <%= form_for [@game, GuessedLetter.new] do |f| %>
     <%= f.text_field :letter, required: true, autofocus: true, placeholder: "Enter your guess!", pattern: '^[a-z]$', title: "Guess a single letter (lowercase a-z)", disabled: game_over?(@game) %>

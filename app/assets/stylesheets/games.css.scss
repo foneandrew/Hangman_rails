@@ -15,6 +15,11 @@ h1 {
   font-size: 250%;
 }
 
+ul {
+  padding-left: 0;
+  list-style: none;
+}
+
 .guess_list {
   padding: 10px;
 }
@@ -45,6 +50,15 @@ h1 {
   font-size: 300%;
 }
 
+.games_stats {
+  font-size: 80%;
+}
+
+.obscured_word_lose {
+  font-size: 300%;
+  color: #9a0000;
+}
+
 .correct_letter {
   color: green;
 }
@@ -58,11 +72,11 @@ h1 {
 }
 
 .game_lost_message {
-  color: #9a0000
+  color: #9a0000;
 }
 
 .game_won {
-  color: green;
+  color: black;
 }
 
 .game_lost {

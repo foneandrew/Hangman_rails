@@ -5,8 +5,6 @@ class GamesController < ApplicationController
 
   def show
     @game = Game.find(params[:id])
-    @guessed_letters = @game.guessed_letters
-    @obscured_word = @game.guessed_word
   end
 
   def create

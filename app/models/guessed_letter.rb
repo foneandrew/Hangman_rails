@@ -6,6 +6,8 @@ class GuessedLetter < ActiveRecord::Base
     uniqueness: { scope: :game_id }
   validate :game_is_in_progress?
 
+  scope :alphabetical_order, -> { order(:letter) }
+
   def correct?
     game.secret_word.include? letter
   end
@@ -13,6 +15,7 @@ class GuessedLetter < ActiveRecord::Base
   private
 
   def game_is_in_progress?
+    #note currently semi-broken as the game will know its over before the record is saved
     errors.add :game_id, 'cannot add guess to a game that is not in progress' if game.lives_remaining < 0 || game.word_is_guessed?
   end
 end

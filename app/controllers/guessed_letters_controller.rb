@@ -5,7 +5,6 @@ class GuessedLettersController < ApplicationController
     guessed_letter = game.guessed_letters.create(params.require(:guessed_letter).permit(:letter))
     
     guessed_letter.save
-
     redirect_to game
   end
 end

@@ -5,11 +5,12 @@
   <%= form_for(Game.new) do |f| %>
     <%= f.submit "New Game" %>
   <% end %>
-  <ul style="list-style-type:none">
+  <ul>
     <% @games.each do |game| %>
       <li>
         <%= link_to game_description(game), game %>
       </li>
     <% end %>
   </ul>
+  <%= content_tag :span, global_game_statistics, class: :games_stats %>
 </div>
