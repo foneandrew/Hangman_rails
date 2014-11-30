@@ -1,16 +1,21 @@
 
 <h1>Hangdude</h1>
 <div class="floating_box">
-<%= flash[:alert] %>
   <%= form_for(Game.new) do |f| %>
     <%= f.submit "New Game" %>
   <% end %>
-  <ul>
-    <% @games.each do |game| %>
-      <li>
-        <%= link_to game_description(game), game %>
-      </li>
-    <% end %>
-  </ul>
-  <%= content_tag :span, global_game_statistics(total_games: @total_games, games_won: @games_won, games_lost: @games_lost, avg_lives_remaining: @avg_lives_remaining), class: :games_stats %>
+
+  <%= flash[:alert] %>
+
+  <div class="scroll_pane">
+    <ul>
+      <% @games.each do |game| %>
+        <li>
+          <%= link_to game_description(game), game %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
 </div>
+
+<%= content_tag :span, global_game_statistics(total_games: @total_games, games_won: @games_won, games_lost: @games_lost, avg_lives_remaining: @avg_lives_remaining), class: :games_stats %>

@@ -5,14 +5,10 @@ class MakeGuess
   end
 
   def call
-    if @game.game_over?
-      "cannot make a guess as the game is already over!"
-    else
-      guessed_letter = @game.guessed_letters.build(@params.require(:guessed_letter).permit(:letter))
+    return "Cannot make a guess as the game is already over!" if @game.game_over?
+      
+    guessed_letter = @game.guessed_letters.build(@params.require(:guessed_letter).permit(:letter))
 
-      unless guessed_letter.save
-        "Something is borked. #{guessed_letter.errors.full_messages.to_sentence}"
-      end
-    end
+    return "Cannot add guess: #{guessed_letter.errors.full_messages.to_sentence}" unless guessed_letter.save
   end
 end

@@ -2,11 +2,11 @@ module GamesHelper
   def obscured_word(game)
     game.partially_revealed_word.map do |letter|
       if letter
-        "#{letter.upcase} "
+        letter.upcase
       else
-        "- "
+        '-'
       end
-    end.join
+    end.join(' ')
   end
 
   def hangman_image(game)

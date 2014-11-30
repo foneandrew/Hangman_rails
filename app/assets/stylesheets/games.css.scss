@@ -6,7 +6,7 @@ body {
   color: white;
   text-align: center;
   font-family: Verdana;
-  background: #11ad00;
+  background: #5C5C5C;
   margin: 0 25%;
 }
 
@@ -32,6 +32,12 @@ a:link {
   padding: 15px;
 }
 
+.scroll_pane {
+  max-height: 500px;
+  overflow-y: auto; 
+  margin: 5px;
+}
+
 .floating_box {
   -webkit-box-sizing: content-box;
   -moz-box-sizing: content-box;
@@ -41,13 +47,13 @@ a:link {
   -webkit-border-radius: 5px;
   border-radius: 5px;
   text-align: center;
-  background: #8bef00;
+  background: #B3B3B3;
   -webkit-box-shadow: 5px 5px 1px 0 rgba(0,0,0,0.5) ;
   box-shadow: 5px 5px 1px 0 rgba(0,0,0,0.5) ;
   text-shadow: 1px 1px 1px rgba(0,0,0,0.2) ;
-  padding: 5%;
+  padding: 20px;
   overflow: scroll;
-  margin: 0 0 5%;
+  margin: 0 0 10px;
 }
 
 .obscured_word {

@@ -9,8 +9,8 @@
   Lives remaining: <%= @game.lives_remaining %>
 
   <%= form_for [@game, GuessedLetter.new] do |f| %>
-    <%= f.text_field :letter, required: true, autofocus: true, placeholder: "Enter your guess!", pattern: '^[A-Za-z]$', title: "Guess a single letter (lowercase a-z)" %>
-    <%= f.submit "Guesticulate" %>
+    <%= f.text_field :letter, required: true, autofocus: true, placeholder: "Enter your guess!", pattern: '^[A-Za-z]$', title: "Guess a single letter (lowercase a-z)", disabled: @game.game_over? %>
+    <%= f.submit "Guesticulate", disabled: @game.game_over? %>
   <% end %>
 
   <%= flash[:alert] %>
