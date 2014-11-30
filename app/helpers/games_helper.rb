@@ -34,11 +34,11 @@ module GamesHelper
 
   def game_description(game)
     if game.game_won?
-      content_tag :span, "[#{game.secret_word.upcase}] (won with #{game.lives_remaining} lives remaining)", class: :game_won
+      content_tag :span, "#{game.secret_word.upcase} (won with #{game.lives_remaining} lives remaining)", class: :game_won
     elsif game.game_lost?
-      content_tag :span, "[#{obscured_word(game)}] (lost, word was: #{game.secret_word.upcase})", class: :game_lost
+      content_tag :span, "#{obscured_word(game)} (lost, word was: #{game.secret_word.upcase})", class: :game_lost
     else
-      content_tag :span, "IN PROGRESS [#{obscured_word(game)}] (#{game.lives_remaining} lives remaining)", class: :game_in_progress
+      content_tag :span, "Still going! [#{obscured_word(game)}] (#{game.lives_remaining} lives remaining)", class: :game_in_progress
     end
   end
 end

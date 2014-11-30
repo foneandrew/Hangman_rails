@@ -22,6 +22,11 @@ ul {
 
 a:link {
   text-decoration: none;
+  color: lightgrey;
+}
+
+a:visited {
+  color: lightgrey;
 }
 
 .guess_list {
@@ -86,7 +91,7 @@ a:link {
 }
 
 .game_won {
-  color: grey;
+  color: #E8E8E8;
 }
 
 .game_lost {
