@@ -1,14 +1,24 @@
 class MakeGuess
-  def initialize(game:, params:)
+  attr_reader :error_message
+  
+  def initialize(game:, letter:)
     @game = game
-    @params = params
+    @letter = letter
   end
 
   def call
-    return "Cannot make a guess as the game is already over!" if @game.game_over?
+    if @game.game_over?
+      @error_message = "Cannot make a guess as the game is already over!" 
+      return false
+    end
       
-    guessed_letter = @game.guessed_letters.build(@params.require(:guessed_letter).permit(:letter))
+    guessed_letter = @game.guessed_letters.build(letter: @letter)
 
-    return "Cannot add guess: #{guessed_letter.errors.full_messages.to_sentence}" unless guessed_letter.save
+    unless guessed_letter.save
+      @error_message = "Cannot add guess: #{guessed_letter.errors.full_messages.to_sentence}"
+      return false
+    end
+
+    return true
   end
 end

@@ -11,11 +11,11 @@
     <ul>
       <% @games.each do |game| %>
         <li>
-          <%= link_to game_description(game), game %>
+          <%= link_to game_status_description(game), game %>
         </li>
       <% end %>
     </ul>
   </div>
 </div>
 
-<%= content_tag :span, global_game_statistics(total_games: @total_games, games_won: @games_won, games_lost: @games_lost, avg_lives_remaining: @avg_lives_remaining), class: :games_stats %>
+<%= content_tag :span, global_game_statistics(games_stats: @games_stats), class: :games_stats %>

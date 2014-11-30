@@ -9,12 +9,12 @@ module GamesHelper
     end.join(' ')
   end
 
-  def hangman_image(game)
-    return "dead_guy_won.png" if game.game_won?
-    "dead_guy_#{Game::MAX_LIVES - game.lives_remaining}.png"
+  def hangman_image_path(game)
+    return "hangman_won.png" if game.game_won?
+    "hangman_#{Game::MAX_LIVES - game.lives_remaining}.png"
   end
 
-  def guess_list(game)
+  def previous_guesses(game)
     game.guessed_letters.alphabetical_order.map do |letter|
       content_tag :span, letter.letter, class: (letter.correct? ? :correct_letter : :wrong_letter)
     end.to_sentence
@@ -28,11 +28,11 @@ module GamesHelper
     end
   end
 
-  def global_game_statistics(total_games:, games_won:, games_lost:, avg_lives_remaining:)
-    "Total games played: #{total_games}, Games won: #{games_won}, Games lost: #{games_lost}, average lives remaining: #{avg_lives_remaining.round(1)}"
+  def global_game_statistics(games_stats:)
+    "Total games played: #{games_stats.total_games}, Games won: #{games_stats.games_won}, Games lost: #{games_stats.games_lost}, average lives remaining: #{games_stats.avg_lives_remaining.round(1)}"
   end
 
-  def game_description(game)
+  def game_status_description(game)
     if game.game_won?
       content_tag :span, "#{game.secret_word.upcase} (won with #{game.lives_remaining} lives remaining)", class: :game_won
     elsif game.game_lost?
